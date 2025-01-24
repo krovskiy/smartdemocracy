@@ -1,0 +1,157 @@
+{
+    "id": "7893e8e899521fc8028460f8ed470897",
+    "url": "https://www.zdg.md/stiri/a-fost-adoptata-o-declaratiei-comuna-privind-colaborarea-dintre-consiliile-superioare-ale-magistraturii-din-r-moldova-si-romania/",
+    "logUrl": "https://www.zdg.md/wp-content/uploads/2025/01/Dec-2.jpg",
+    "title": "A fost adoptată o Declarației comună privind colaborarea dintre Consiliile Superioare ale Magistraturii din R. Moldova și România",
+    "publishTime": "2025-01-24 19:44:35",
+    "source": "Ziarul de Gardă",
+    "sourceLogo": "http://www.ziaruldegarda.ro/favicon.ico",
+    "graphNodes": [
+      {
+        "level": 1,
+        "articleGraphNodes": [
+          {
+            "id": "f9c128dff6deca035690e2f0b3e5c3dc",
+            "url": "https://www.juridice.ro/768795/o-delegatie-al-csm-din-republica-moldova-se-afla-in-vizita-in-romania.html",
+            "parentId": "7893e8e899521fc8028460f8ed470897",
+            "parentUrl": "https://www.zdg.md/stiri/a-fost-adoptata-o-declaratiei-comuna-privind-colaborarea-dintre-consiliile-superioare-ale-magistraturii-din-r-moldova-si-romania/",
+            "logUrl": "https://www.juridice.ro/wp-content/uploads/2017/01/JURIDICE-200.png",
+            "title": "O delegație al CSM din Republica Moldova se află în vizită în România",
+            "publishTime": "2025-01-24 09:20:21",
+            "source": "Juridice",
+            "sourceType": "newspaper",
+            "sourceLogo": "https://www.juridice.ro/imagini/depozit/favicon/juridice.ico",
+            "linkType": "SEMANTIC",
+            "distance": 0.1486043915609585
+          },
+          {
+            "id": "b772f3a449b25a2644eed4dfd2e04716",
+            "url": "https://www.deschide.md/articole/veronica-mihailov-moraru-discutii-cu-delegatia-csm-din-romania-despre-digitalizarea-sistemului-judiciar-din-r-moldova",
+            "parentId": "7893e8e899521fc8028460f8ed470897",
+            "parentUrl": "https://www.zdg.md/stiri/a-fost-adoptata-o-declaratiei-comuna-privind-colaborarea-dintre-consiliile-superioare-ale-magistraturii-din-r-moldova-si-romania/",
+            "logUrl": "https://cdn.prod.website-files.com/66e227a8e3a4dbbdaebff867/679285ace7dc72ea52c412ed_1w8a1126.jpg",
+            "title": "Veronica Mihailov-Moraru, discuții cu delegația CSM din România despre digitalizarea sistemului judiciar din R. Moldova  | Deschide",
+            "publishTime": "2025-01-23 18:53:06",
+            "source": "deschide.md",
+            "sourceLogo": "",
+            "linkType": "SEMANTIC",
+            "distance": 0.09839790865862552
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "articleGraphNodes": [
+          {
+            "id": "2ca113c6a4b66c3523ad58dceaf06112",
+            "url": "https://profesionisti.juridice.ro/andreea-uzlau",
+            "parentId": "f9c128dff6deca035690e2f0b3e5c3dc",
+            "parentUrl": "https://www.juridice.ro/768795/o-delegatie-al-csm-din-republica-moldova-se-afla-in-vizita-in-romania.html",
+            "logUrl": "",
+            "title": "Andreea Uzlău – Profesioniști",
+            "publishTime": "2024-07-04 14:21:17",
+            "source": "profesionisti.juridice.ro",
+            "sourceLogo": "",
+            "linkType": "EXPLICIT",
+            "distance": 0.34961559711136403
+          },
+          {
+            "id": "add2d04a899e6849c6b34d41fcfceeeb",
+            "url": "https://profesionisti.juridice.ro/ramona-gratiela-milu",
+            "parentId": "f9c128dff6deca035690e2f0b3e5c3dc",
+            "parentUrl": "https://www.juridice.ro/768795/o-delegatie-al-csm-din-republica-moldova-se-afla-in-vizita-in-romania.html",
+            "logUrl": "",
+            "title": "Ramona Graţiela Milu – Profesioniști",
+            "publishTime": "2017-08-09 07:00:40",
+            "source": "profesionisti.juridice.ro",
+            "sourceLogo": "",
+            "linkType": "EXPLICIT",
+            "distance": 0.3125520206443877
+          },
+          {
+            "id": "bb4a4def0c8a43b6b10cde130ab68de5",
+            "url": "https://profesionisti.juridice.ro/claudiu-dragusin",
+            "parentId": "f9c128dff6deca035690e2f0b3e5c3dc",
+            "parentUrl": "https://www.juridice.ro/768795/o-delegatie-al-csm-din-republica-moldova-se-afla-in-vizita-in-romania.html",
+            "logUrl": "",
+            "title": "Claudiu Drăgușin – Profesioniști",
+            "publishTime": "2018-01-28 18:00:30",
+            "source": "profesionisti.juridice.ro",
+            "sourceLogo": "",
+            "linkType": "EXPLICIT",
+            "distance": 0.22841884979748583
+          }
+        ]
+      }
+    ],
+    "outboundNodes": [],
+    "trustLevel": 92,
+    "trustLevelType": "on demand",
+    "trustLevelComponent": {
+      "version": "2.0",
+      "trustLevelComponents": [
+        {
+          "type": "author",
+          "score": 1.0,
+          "weight": 0.5,
+          "meta": {
+            "authorPseudo": false,
+            "authorName": "Alina Vlas"
+          }
+        },
+        {
+          "type": "entity",
+          "score": 0.929,
+          "weight": 2.0,
+          "meta": {
+            "persOrgCnt": 11,
+            "totalEntCnt": 26,
+            "dateTimeCnt": 2,
+            "locCnt": 13
+          }
+        },
+        {
+          "type": "source",
+          "score": 1.0,
+          "weight": 1.0,
+          "meta": {
+            "owner": "SPP",
+            "feedTypeScore": 1.0,
+            "feedType": "newspaper",
+            "ownerScore": 1.0
+          }
+        },
+        {
+          "type": "sentiment",
+          "score": 0.5,
+          "weight": 0.25,
+          "meta": {
+            "sentimentLabel": "Negative",
+            "sentimentPercent": 0.0
+          }
+        },
+        {
+          "type": "noclickbait",
+          "score": 0.9944625496864319,
+          "weight": 0.016612350940704346,
+          "meta": {
+            "signals": {
+              "bodySentiment": "neg",
+              "titleChars": 129,
+              "titleCaps": 8,
+              "titlePunctuation": 1,
+              "titleNumbers": 0,
+              "contextSetting": 0.92,
+              "titleSentiment": "neu",
+              "bodyEntityCnt": 25,
+              "titleEntityCnt": 2,
+              "entityMatch": 1,
+              "baitPhraseCnt": 0
+            },
+            "isClickbait": false
+          }
+        }
+      ]
+    },
+    "trustLevelMessage": "We found this article's author (Alina Vlas).\nThis article's publisher has been verified. Type: 'newspaper'.\nThis article has good (92.90) context setting (who/when/where).\nThis article has an overall Negative sentiment (subjective).\nThis article has a 0% chance of being clickbait.\nThis article's Content Quality Score is calculated using the metrics above.\nPatient Zero's Content Quality Score is: 76%."
+  }
