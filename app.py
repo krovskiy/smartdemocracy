@@ -6,13 +6,14 @@ app = Flask(__name__)
 
 API_ENDPOINT_GRAPH = "https://app.trustservista.com/api/rest/v2/graph"
 API_ENDPOINT_TRUST = "https://app.trustservista.com/api/rest/v2/trustlevel"
-API_KEY = "d4f388d353b44266aa075e2c5cd2b48b"
+API_KEY = "d4f388d353b44266aa075e2c5cd2b48b"  # hardcoded crazy
 HEADERS = {
     "X-TRUS-API-Key": API_KEY,
     "Content-Type": "application/json",
     "Accept": "application/json",
     "Cache-Control": "no-cache"
 }
+
 
 def get_graph(content_uri):
     data = {
@@ -26,6 +27,7 @@ def get_graph(content_uri):
     else:
         return {"error": f"Error {response.status_code}: {response.text}"}
 
+
 def get_trust(content_uri):
     data = {
         "content": "EMPTY",
@@ -37,24 +39,25 @@ def get_trust(content_uri):
         return response.json()
     else:
         return {"error": f"Error {response.status_code}: {response.text}"}
-    
+
+
 def sort_graph_nodes(graph_result):
-  
     graph_result['graphNodes'] = sorted(
-        graph_result['graphNodes'], 
+        graph_result['graphNodes'],
         key=lambda x: min(
-            article.get('publishTime', '9999-99-99') 
+            article.get('publishTime', '9999-99-99')
             for article in x.get('articleGraphNodes', [])
         )
     )
 
     for node in graph_result['graphNodes']:
         node['articleGraphNodes'] = sorted(
-            node.get('articleGraphNodes', []), 
+            node.get('articleGraphNodes', []),
             key=lambda article: article.get('publishTime', '9999-99-99')
         )
-    
+
     return graph_result
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -65,9 +68,9 @@ def index():
         graph_result = get_graph(content_uri)
         trust_result = get_trust(content_uri)
         graph_result = sort_graph_nodes(graph_result)
-        
+
         print(json.dumps(graph_result, indent=4))
-        
+
         earliest_time = None
         for node in graph_result.get('graphNodes', []):
             for article in node.get('articleGraphNodes', []):
@@ -81,15 +84,14 @@ def index():
                             "publishTime": publish_time,
                             "url": article.get('url')
                         }
-            
-        # Graph sorted by date
 
-        graph_result['graphNodes'] = sorted(graph_result['graphNodes'], key=lambda x: x['articleGraphNodes'][0]['publishTime'])
-        print(graph_result['graphNodes'])
         result = {
             "graph": graph_result,
             "trust": trust_result
         }
+
+        graph_result['graphNodes'] = sorted(graph_result['graphNodes'], key=lambda x: x['articleGraphNodes'][0]['publishTime'])
+
     return render_template_string('''
     <!doctype html>
 <html lang="en">
@@ -150,13 +152,33 @@ def index():
 </head>
 <body>
     <div class="container rounded shadow">
-        <h1 class="text-center mb-4">Smartdemocracy Source</h1>
+        <h1 class="text-center mb-4" style="
+    font-size: 3rem;
+    background: linear-gradient(90deg, #3b82f6, #b026ff, #3b82f6);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 3s linear infinite;
+    transition: all 0.3s ease;
+    cursor: pointer;"
+    onclick="window.location.href='/';">
+    SMARTDEMOCRACY
+</h1>
+<style>
+    @keyframes shine {
+        to { background-position: 200% center; }
+    }
+    h1:hover {
+        transform: scale(1.05);
+    }
+</style>
         <form method="post" class="mb-4">
             <div class="form-group">
-                <label for="contentUri" class="form-label">Content URI:</label>
+                <label for="contentURL" class="form-label">Content URL:</label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="contentUri" name="contentUri" 
-                           placeholder="Paste your content URI here" required>
+                           placeholder="Paste your link here!" required>
                     <button type="submit" class="btn btn-primary">Analyze</button>
                 </div>
             </div>
@@ -195,26 +217,44 @@ def index():
                             </div>
                             <div class="row">
                                 {% for component in result.trust.trustLevelComponent.trustLevelComponents %}
-                                  {% if component.type not in ['author', 'entity'] %}
-                                    <div class="col-md-4 mb-2">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h5>{{ component.type }}</h5>
-                                                <div class="progress" style="height: 20px;">
-                                                    <div class="progress-bar progress-bar-custom" 
-                                                         role="progressbar" 
-                                                         style="width: {{ (component.score * 100) }}%; 
-                                                                background-color: {% if component.score < 0.33 %}#dc3545{% elif component.score < 0.66 %}#ffc107{% else %}#28a745{% endif %};" 
-                                                         aria-valuenow="{{ component.score * 100 }}" 
-                                                         aria-valuemin="0" 
-                                                         aria-valuemax="100">
-                                                        {{ "%.2f"|format(component.score * 100) }}%
+                                    {% if component.type not in ['author', 'entity'] %}
+                                        <div class="col-md-4 mb-2">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5>
+                                                        {% if component.type == 'source' %}
+                                                            Source Credibility
+                                                        {% elif component.type == 'noclickbait' %}
+                                                            Content Quality
+                                                        {% elif component.type == 'sentiment' %}
+                                                            Emotional Neutrality
+                                                        {% else %}
+                                                            {{ component.type }}
+                                                        {% endif %}
+                                                    </h5>
+                                                    <div class="progress" style="height: 20px;">
+                                                        <div class="progress-bar progress-bar-custom" 
+                                                             role="progressbar" 
+                                                             style="width: {{ (component.score * 100) }}%; 
+                                                                    background-color: {% if component.score < 0.33 %}#dc3545{% elif component.score < 0.66 %}#ffc107{% else %}#28a745{% endif %};" 
+                                                             aria-valuenow="{{ component.score * 100 }}" 
+                                                             aria-valuemin="0" 
+                                                             aria-valuemax="100">
+                                                            {% if component.type == 'sentiment' %}
+                                                                {% if component.score > 0.5 %}
+                                                                    Positive
+                                                                {% else %}
+                                                                    Negative
+                                                                {% endif %}
+                                                            {% else %}
+                                                                {{ "%.2f"|format(component.score * 100) }}%
+                                                            {% endif %}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                  {% endif %}
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                         </div>
@@ -258,5 +298,6 @@ def index():
 </html>
     ''', result=result, first_publisher=first_publisher)
 
+
 if __name__ == '__main__':
-    app.run(debug=True) 
+    app.run(debug=True)
