@@ -256,7 +256,7 @@ def index():
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-    ''')
+    ''', result=result, first_publisher=first_publisher)
 
 if __name__ == '__main__':
     app.run(debug=True) 
