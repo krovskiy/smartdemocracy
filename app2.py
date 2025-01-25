@@ -1,10 +1,8 @@
-import flask
+
 import requests
 import json
 import os
 from datetime import datetime
-
-app = flask.Flask(__name__)
 
 API_KEY = "d4f388d353b44266aa075e2c5cd2b48b"
 HEADERS = {
@@ -17,15 +15,9 @@ HEADERS = {
 API_ENDPOINT_GRAPH = "https://app.trustservista.com/api/rest/v2/graph"
 API_ENDPOINT_TRUST = "https://app.trustservista.com/api/rest/v2/trustlevel"
 
-@app.route('/')
-def index():
-    return flask.render_template('index.html')
 
-@app.route('/analyze', methods=['POST'])
 def analyze():
-    user_url = flask.request.form.get('url')
-    if not user_url:
-        return flask.jsonify({"error": "URL is required"}), 400
+    user_url = 'https://www.bbc.com/news/articles/cdd9zpj13q9o'
 
     api_data = {
         "content": "EMPTY",
@@ -44,16 +36,14 @@ def analyze():
         "trust": trust_response.json() if trust_response.status_code == 200 else {"error": trust_response.text}
     }
 
-  
-    os.makedirs('results', exist_ok=True)
-
+    print(results)
    
     filename = f"data.json"
     with open(filename, 'w') as f:
         json.dump(results, f, indent=4)
 
   
-    return flask.render_template('results.html', results=results)
+    
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    analyze()
