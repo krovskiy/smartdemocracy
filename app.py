@@ -6,14 +6,15 @@ app = Flask(__name__)
 
 API_ENDPOINT_GRAPH = "https://app.trustservista.com/api/rest/v2/graph"
 API_ENDPOINT_TRUST = "https://app.trustservista.com/api/rest/v2/trustlevel"
-API_KEY = "d4f388d353b44266aa075e2c5cd2b48b"  # hardcoded crazy
+
+API_KEY = "" # place your api key here
+
 HEADERS = {
     "X-TRUS-API-Key": API_KEY,
     "Content-Type": "application/json",
     "Accept": "application/json",
     "Cache-Control": "no-cache"
 }
-
 
 def get_graph(content_uri):
     data = {
