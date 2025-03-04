@@ -4,6 +4,12 @@ Project that uses [trustservista](https://www.trustservista.com/) API in order t
 
 ## Requirements
 
+- flask
+- python
+  
+## Run the program
+
+`python app.py`
 
 # Example
 
